@@ -15,7 +15,7 @@ class ExpenseItem extends StatelessWidget {
             Text(expense.name),
             Row(
               children: [
-                Text(expense.price.toStringAsFixed(2) + ' ₺ '),
+                Text('${expense.price.toStringAsFixed(2)} ₺ '),
                 const Spacer(),
                 Icon(categoryIcons[expense.category]),
                 const SizedBox(

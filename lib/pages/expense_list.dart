@@ -29,7 +29,7 @@ class _ExpenseListState extends State<ExpenseList> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 300, child: Text('Grafik ')),
+        const SizedBox(height: 150, child: Text('Grafik ')),
         Expanded(
           child: ListView.separated(
             padding: const EdgeInsets.all(8),
