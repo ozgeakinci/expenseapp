@@ -1,4 +1,5 @@
 import 'package:expenseapp/models/expense.dart';
+import 'package:expenseapp/widgets/expense_item.dart';
 import 'package:flutter/material.dart';
 
 class ExpenseList extends StatefulWidget {
@@ -34,9 +35,7 @@ class _ExpenseListState extends State<ExpenseList> {
             padding: const EdgeInsets.all(8),
             itemCount: expenses.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(expenses[index].name),
-              );
+              return ExpenseItem(expenses[index]);
             },
             separatorBuilder: (BuildContext context, int index) =>
                 const Divider(
