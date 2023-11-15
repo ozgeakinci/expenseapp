@@ -14,15 +14,25 @@ class _ExpenseListState extends State<ExpenseList> {
 
   final List<Expense> expenses = [
     Expense(
-        name: "Yiyecek",
-        price: 200,
+        name: "Grocery Spending",
+        price: 400,
         date: DateTime.now(),
         category: Category.food),
     Expense(
         name: 'Flutter Udemy Course',
         price: 200,
         date: DateTime.now(),
-        category: Category.education)
+        category: Category.education),
+    Expense(
+        name: 'Spain Tour',
+        price: 25000,
+        date: DateTime.now(),
+        category: Category.travel),
+    Expense(
+        name: 'Business lunch',
+        price: 1500,
+        date: DateTime.now(),
+        category: Category.work)
   ];
 
   @override
@@ -30,17 +40,26 @@ class _ExpenseListState extends State<ExpenseList> {
     return Column(
       children: [
         const SizedBox(height: 150, child: Text('Grafik ')),
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 16),
+              child: Text('Recent Expenses',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                  )),
+            ),
+          ],
+        ),
         Expanded(
-          child: ListView.separated(
+          child: ListView.builder(
             padding: const EdgeInsets.all(8),
             itemCount: expenses.length,
             itemBuilder: (context, index) {
               return ExpenseItem(expenses[index]);
             },
-            separatorBuilder: (BuildContext context, int index) =>
-                const Divider(
-              color: Colors.grey,
-            ),
           ),
         )
       ],

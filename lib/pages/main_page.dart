@@ -15,15 +15,23 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 104, 57, 231),
-        title: const Text("Expense App"),
+        backgroundColor: const Color.fromARGB(255, 78, 112, 248),
+        title: const Text(
+          "Expense App",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+              color: Color(0xffffffff)),
+        ),
         actions: [
           IconButton(
               onPressed: () {
                 showModalBottomSheet(
                     context: context, builder: (ctx) => const NewExpense());
               },
-              icon: const Icon(Icons.add)),
+              icon: const Icon(Icons.add),
+              iconSize: 30,
+              color: Colors.white),
         ],
       ),
       body: const ExpenseList(),

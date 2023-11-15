@@ -6,11 +6,11 @@ const uuid = Uuid();
 
 enum Category { food, education, travel, work }
 
-const categoryIcons = {
-  Category.food: Icons.food_bank,
-  Category.education: Icons.cast_for_education,
-  Category.travel: Icons.travel_explore,
-};
+// const categoryIcons = {
+//   Category.food: Icons.food_bank,
+//   Category.education: Icons.cast_for_education,
+//   Category.travel: Icons.travel_explore,
+// };
 
 class Expense {
   Expense(
@@ -28,6 +28,30 @@ class Expense {
 
   //getter method bir değişken gibi davranan method
   //setter metod bir değişken gibi davranan method
+
+  Icon getCategoryIcon(Category category) {
+    switch (category) {
+      case Category.food:
+        return const Icon(
+          Icons.food_bank,
+          color: Colors.amber,
+          size: 40,
+        );
+      case Category.education:
+        return const Icon(Icons.cast_for_education,
+            color: Colors.blueAccent, size: 40);
+
+      case Category.travel:
+        return const Icon(
+          Icons.travel_explore,
+          color: Colors.red,
+          size: 40,
+        );
+      case Category.work:
+        return const Icon(Icons.work,
+            color: Color.fromARGB(255, 38, 197, 120), size: 40);
+    }
+  }
 
   String get formattedDate {
     var formatter = DateFormat.yMd();
