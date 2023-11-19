@@ -1,3 +1,4 @@
+import 'package:expenseapp/models/expense.dart';
 import 'package:expenseapp/pages/expense_list.dart';
 import 'package:expenseapp/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,14 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  final List<Expense> expenses = [];
+
+  void _addExpense(Expense newExpense) {
+    setState(() {
+      expenses.add(newExpense);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

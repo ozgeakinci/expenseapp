@@ -1,8 +1,13 @@
 import 'package:expenseapp/models/expense.dart';
+import 'package:expenseapp/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 
 class ExpenseItem extends StatefulWidget {
-  const ExpenseItem(this.expense, {Key? key}) : super(key: key);
+  const ExpenseItem(
+    this.expense, {
+    Key? key,
+  }) : super(key: key);
+
   final Expense expense;
 
   @override
