@@ -11,39 +11,68 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final List<Expense> expenses = [];
+  final String _title = "Expense App";
+  final List<Expense> expenses = [
+    Expense(
+        name: "Grocery Spending",
+        price: 400,
+        date: DateTime.now(),
+        category: Category.food),
+    Expense(
+        name: 'Flutter Udemy Course',
+        price: 200,
+        date: DateTime.now(),
+        category: Category.education),
+    Expense(
+        name: 'Spain Tour',
+        price: 25000,
+        date: DateTime.now(),
+        category: Category.travel),
+    Expense(
+        name: 'Business lunch',
+        price: 1500,
+        date: DateTime.now(),
+        category: Category.work)
+  ];
 
-  void _addExpense(Expense newExpense) {
+  void addExpense(Expense expense) {
     setState(() {
-      expenses.add(newExpense);
+      expenses.add(expense);
     });
   }
+
+  void removeExpense(Expense expense) {
+    setState(() {
+      expenses.remove(expense);
+    });
+  }
+
+  // bool isDark = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 78, 112, 248),
-        title: const Text(
-          "Expense App",
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 26,
-              color: Color(0xffffffff)),
-        ),
+        title: Text(_title, style: Theme.of(context).textTheme.headlineMedium),
         actions: [
           IconButton(
               onPressed: () {
                 showModalBottomSheet(
-                    context: context, builder: (ctx) => const NewExpense());
+                    context: context,
+                    builder: (ctx) => NewExpense(
+                          onAdd: (expense) => addExpense(expense),
+                        ));
               },
               icon: const Icon(Icons.add),
               iconSize: 30,
               color: Colors.white),
         ],
       ),
-      body: const ExpenseList(),
+      body: ExpenseList(
+        expenses,
+        removeExpense,
+      ),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:expenseapp/widgets/expense_item.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:expenseapp/models/expense.dart';
@@ -6,7 +5,10 @@ import 'package:expenseapp/models/expense.dart';
 class NewExpense extends StatefulWidget {
   const NewExpense({
     Key? key,
+    required this.onAdd,
   }) : super(key: key);
+
+  final void Function(Expense expense) onAdd;
 
   @override
   _NewExpenseState createState() => _NewExpenseState();
@@ -96,12 +98,9 @@ class _NewExpenseState extends State<NewExpense> {
           date: _selectedDate!,
           category: selectedCategory);
 
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ExpenseItem(newExpense),
-        ),
-      );
+      widget.onAdd(newExpense);
+
+      Navigator.pop(context);
     }
   }
 

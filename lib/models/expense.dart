@@ -57,4 +57,6 @@ class Expense {
     var formatter = DateFormat.yMd();
     return formatter.format(date);
   }
+
+  void undo() {}
 }

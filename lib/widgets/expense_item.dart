@@ -6,10 +6,12 @@ class ExpenseItem extends StatefulWidget {
   const ExpenseItem(
     this.expense, {
     Key? key,
+    this.newExpense,
   }) : super(key: key);
 
   final Expense expense;
 
+  final newExpense;
   @override
   State<ExpenseItem> createState() => _ExpenseItemState();
 }
@@ -18,7 +20,7 @@ class _ExpenseItemState extends State<ExpenseItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color(0xffffffff),
+      // color: const Color(0xffffffff),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
         child: Row(
@@ -44,7 +46,7 @@ class _ExpenseItemState extends State<ExpenseItem> {
                 //   TextStyle(
                 //       fontWeight: fontWeight.fontWeight, fontSize: 16),
                 // ),
-                Text(widget.expense.formattedDate)
+                Text(widget.expense.formattedDate),
               ],
             )
           ],
